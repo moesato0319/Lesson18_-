@@ -2,6 +2,7 @@
     <div class="max-w-3xl mx-auto">
         <h1 class="text-xl text-blue-600 font-bold mb-4">投稿一覧</h1>
 
+        <!--投稿を検索-->
         <form method="GET" action="{{ route('posts.index') }}" class="mb-4">
             <input type="text" name="keyword" placeholder="投稿を検索" value="{{ $keyword ?? '' }}"
                 class="border rounded p-2 w-2/3">

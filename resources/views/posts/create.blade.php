@@ -1,10 +1,23 @@
 <x-app-layout>
-    <div class="max-w-xl mx-auto">
-        <h2 class="text-xl font-bold mb-4 text-blue-600">新規投稿</h2>
-        <form action="{{ route('posts.store') }}" method="POST">
+    <div class="max-w-xl mx-auto py-6">
+        <h2 class="text-xl font-bold text-blue-600 mb-4 border-l-4 border-blue-600 pl-2">
+            新規投稿
+        </h2>
+
+        <form method="POST" action="{{ route('posts.store') }}">
             @csrf
-            <textarea name="content" class="w-full border p-2 rounded mb-4" rows="5">{{ old('content') }}</textarea>
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">投稿</button>
+
+            <textarea name="content" rows="5"
+                class="w-full border rounded p-3 mb-4"
+                placeholder="投稿内容を入力">{{ old('content') }}</textarea>
+
+            @error('content')
+                <p class="text-red-600 text-sm mb-2">{{ $message }}</p>
+            @enderror
+
+            <button class="bg-blue-600 text-white px-4 py-2 rounded">
+                投稿する
+            </button>
         </form>
     </div>
 </x-app-layout>
