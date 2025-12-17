@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\Auth; //自動ログインしないので不要
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
@@ -47,8 +47,8 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        //Auth::login($user);自動ログインさせない
+        //ログイン画面へリダイレクトしてメッセージ表示
+        return redirect()->route('login')->with('status', '登録が完了しました。ログインしてください。');
     }
 }

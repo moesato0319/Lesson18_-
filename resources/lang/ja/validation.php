@@ -1,0 +1,51 @@
+<?php
+
+return [
+    'accepted' => ':attributeを承認してください。',
+    'active_url' => ':attributeが有効なURLではありません。',
+    'after' => ':attributeには:date以降の日付を指定してください。',
+    'alpha' => ':attributeは英字のみ有効です。',
+    'alpha_dash' => ':attributeは英数字・ハイフン・アンダースコアのみ有効です。',
+    'alpha_num' => ':attributeは英数字のみ有効です。',
+    'array' => ':attributeは配列でなくてはなりません。',
+    'before' => ':attributeには:date以前の日付を指定してください。',
+    'between' => [
+        'numeric' => ':attributeは:min〜:maxの間で指定してください。',
+        'file' => ':attributeは:min〜:maxキロバイトの間で指定してください。',
+        'string' => ':attributeは:min〜:max文字の間で指定してください。',
+        'array' => ':attributeは:min〜:max個の間で指定してください。',
+    ],
+    'boolean' => ':attributeはtrueかfalseを指定してください。',
+    'confirmed' => ':attributeと:attribute確認が一致しません。',
+    'date' => ':attributeが有効な日付ではありません。',
+    'email' => ':attributeは有効なメールアドレスでなくてはなりません。',
+    'exists' => '選択された:attributeは無効です。',
+    'filled' => ':attributeは必須です。',
+    'image' => ':attributeは画像でなくてはなりません。',
+    'in' => '選択された:attributeは無効です。',
+    'integer' => ':attributeは整数でなくてはなりません。',
+    'max' => [
+        'numeric' => ':attributeは:max以下で指定してください。',
+        'file' => ':attributeは:maxキロバイト以下で指定してください。',
+        'string' => ':attributeは:max文字以下で指定してください。',
+        'array' => ':attributeは:max個以下にしてください。',
+    ],
+    'min' => [
+        'numeric' => ':attributeは:min以上で指定してください。',
+        'file' => ':attributeは:minキロバイト以上で指定してください。',
+        'string' => ':attributeは:min文字以上で指定してください。',
+        'array' => ':attributeは:min個以上にしてください。',
+    ],
+    'numeric' => ':attributeは数値でなくてはなりません。',
+    'required' => ':attributeは必須です。',
+    'string' => ':attributeは文字列でなくてはなりません。',
+    'unique' => '指定された:attributeは既に使用されています。',
+    'url' => ':attributeは有効なURLではありません。',
+
+    'attributes' => [
+        'name' => '名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+        'password_confirmation' => 'パスワード（確認）',
+    ],
+];

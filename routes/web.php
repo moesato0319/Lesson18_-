@@ -2,49 +2,36 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ProfileController;
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-//Route::get('/', function () {
-  //  return view('welcome');
-//});
-
-// トップページで投稿一覧表示
-Route::get('/', [PostsController::class, 'index'])->name('home');
-
-
-//投稿一覧表示機能
-Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
-
-//投稿新規作成機能
-Route::get('/posts/create', [PostsController::class, 'create'])->middleware('auth')->name('posts.create');
-Route::post('/posts', [PostsController::class, 'store'])->middleware('auth');
-
-
-//投稿編集・更新機能
-Route::middleware(['auth'])->group(function () {
-    Route::get('/posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edit');
-    Route::post('/posts/{id}/update', [PostsController::class, 'update'])->name('posts.update');
+//アクセス時ログイン画面
+Route::get('/', function () {
+    return redirect()->route('login');
 });
 
-//投稿削除機能
-Route::delete('/posts/{id}', [PostsController::class, 'destroy'])->middleware('auth')->name('posts.destroy');
+// 認証必須のルート
+Route::middleware(['auth'])->group(function () {
 
-//投稿検索機能
+    // 投稿一覧
+    Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
 
-//認証後のダッシュボード
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    // 新規投稿
+    Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');
+    Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
+
+    // 編集
+    Route::get('/posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edit');
+    Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update');
+
+    // 削除
+    Route::delete('/posts/{id}', [PostsController::class, 'destroy'])->name('posts.destroy');
+});
+
+// Breeze のプロフィール
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 require __DIR__.'/auth.php';

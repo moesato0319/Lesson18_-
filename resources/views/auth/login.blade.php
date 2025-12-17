@@ -34,6 +34,13 @@
                         ログイン
                     </button>
                 </div>
+
+                <!--新規登録リンク-->
+            <div class="mt-4 text-center">
+                @if (Route::has('register'))
+            <a href="{{ route('register') }}" class="text-sm text-gray-600 hover:underline">新規登録はこちら</a>
+             @endif
+            </div>
             </form>
         </div>
     </div>
